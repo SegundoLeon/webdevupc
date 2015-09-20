@@ -44,6 +44,7 @@ group :development, :test do
   gem 'spring'
 end
 
+<<<<<<< HEAD
 
 #Form Management Support
 gem 
@@ -56,4 +57,12 @@ gem
 
 gem 'less-rails'
 
+=======
+# For Management Support-Jonathan
+gem 'simple_form'
+
+# Twitter Bootstrap Framework Support-Jonathan
+gem 'therubyracer'
+gem 'less-rails'
+>>>>>>> fcd538e90e897cbfe8788b3349a3589a378a6650
 gem 'twitter-bootstrap-rails'
