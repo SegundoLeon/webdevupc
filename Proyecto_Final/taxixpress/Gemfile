@@ -44,4 +44,13 @@ group :development, :test do
   gem 'spring'
 end
 
+#Form Management Support
+gem 'simple_form'
 
+
+#Twitter Bootstrap Framework Support
+gem 'therubyracer'
+
+gem 'less-rails'
+
+gem 'twitter-bootstrap-rails'
