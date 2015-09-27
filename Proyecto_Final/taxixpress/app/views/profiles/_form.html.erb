@@ -1,0 +1,14 @@
+<%= simple_form_for @profile, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= error_span(@profile[:name]) %>
+  <%= f.input :email %>
+  <%= error_span(@profile[:email]) %>
+  <%= f.input :mobilephone %>
+  <%= error_span(@profile[:mobilephone]) %>
+  <%= f.association :user_type %>
+  <%= error_span(@profile[:user_type_name]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                profiles_path, :class => 'btn btn-default' %>
+<% end %>
