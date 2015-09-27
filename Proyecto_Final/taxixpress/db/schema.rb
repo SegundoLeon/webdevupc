@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20150927043346) do
 
   create_table "payment_methods", force: :cascade do |t|
@@ -32,6 +33,19 @@ ActiveRecord::Schema.define(version: 20150927043346) do
   add_index "profiles", ["user_type_id"], name: "index_profiles_on_user_type_id", using: :btree
 
   create_table "user_types", force: :cascade do |t|
+  end
+end
+
+ActiveRecord::Schema.define(version: 20150927035102) do
+
+  create_table "distrits", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "vehicle_types", force: :cascade do |t|
+
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
     t.datetime "created_at",                null: false

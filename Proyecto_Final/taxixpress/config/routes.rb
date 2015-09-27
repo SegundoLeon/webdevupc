@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+
   resources :payment_methods
   resources :profiles
   resources :user_types
+
+  resources :costs
+  resources :distrits
+  resources :vehicle_types
+
   #get 'home2/index'
   
   #get 'home/index'
