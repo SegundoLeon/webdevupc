@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resources :profiles
   resources :user_types
 
-  resources :costs
   resources :distrits
   resources :vehicle_types
 
