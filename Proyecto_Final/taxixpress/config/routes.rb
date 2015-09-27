@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :costs
+  resources :distrits
+  resources :vehicle_types
   #get 'home2/index'
   
   #get 'home/index'
