@@ -11,8 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20151001025402) do
 
-ActiveRecord::Schema.define(version: 20150927043346) do
+  create_table "distrits", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "payment_methods", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -33,24 +38,34 @@ ActiveRecord::Schema.define(version: 20150927043346) do
   add_index "profiles", ["user_type_id"], name: "index_profiles_on_user_type_id", using: :btree
 
   create_table "user_types", force: :cascade do |t|
-  end
-end
-
-ActiveRecord::Schema.define(version: 20150927035102) do
-
-  create_table "distrits", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "vehicle_types", force: :cascade do |t|
-
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
 
+  create_table "vehicle_types", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "vehicles", force: :cascade do |t|
+    t.string   "brand",           limit: 255
+    t.string   "model",           limit: 255
+    t.string   "plate",           limit: 255
+    t.string   "status",          limit: 255
+    t.integer  "profile_id",      limit: 4
+    t.integer  "vehicle_type_id", limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "vehicles", ["profile_id"], name: "index_vehicles_on_profile_id", using: :btree
+  add_index "vehicles", ["vehicle_type_id"], name: "index_vehicles_on_vehicle_type_id", using: :btree
+
   add_foreign_key "profiles", "user_types"
+  add_foreign_key "vehicles", "profiles"
+  add_foreign_key "vehicles", "vehicle_types"
 end

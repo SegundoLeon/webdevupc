@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: MyString
+  model: MyString
+  plate: MyString
+  status: MyString
+  profile_id: 
+  vehicle_type_id: 
+
+two:
+  brand: MyString
+  model: MyString
+  plate: MyString
+  status: MyString
+  profile_id: 
+  vehicle_type_id: 

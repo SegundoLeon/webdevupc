@@ -1,0 +1,18 @@
+<%= simple_form_for @vehicle, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :brand %>
+  <%= error_span(@vehicle[:brand]) %>
+  <%= f.input :model %>
+  <%= error_span(@vehicle[:model]) %>
+  <%= f.input :plate %>
+  <%= error_span(@vehicle[:plate]) %>
+  <%= f.input :status %>
+  <%= error_span(@vehicle[:status]) %>
+  <%= f.association :profile %>
+  <%= error_span(@vehicle[:profile_name]) %>
+  <%= f.association :vehicle_type %>
+  <%= error_span(@vehicle[:vehicle_type_name]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                vehicles_path, :class => 'btn btn-default' %>
+<% end %>
