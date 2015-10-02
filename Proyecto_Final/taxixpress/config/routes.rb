@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :addresses
+  resources :districts
   resources :vehicles
   resources :payment_methods
   resources :profiles
   resources :user_types
 
-  resources :distrits
   resources :vehicle_types
 
   #get 'home2/index'

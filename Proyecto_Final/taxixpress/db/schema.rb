@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001025402) do
+ActiveRecord::Schema.define(version: 20151001040450) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "reference",   limit: 255
+    t.string   "alias",       limit: 255
+    t.string   "string",      limit: 255
+    t.boolean  "favourite",   limit: 1
+    t.integer  "profile_id",  limit: 4
+    t.integer  "district_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "addresses", ["district_id"], name: "index_addresses_on_district_id", using: :btree
+  add_index "addresses", ["profile_id"], name: "index_addresses_on_profile_id", using: :btree
+
+  create_table "districts", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "distrits", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -65,6 +86,8 @@ ActiveRecord::Schema.define(version: 20151001025402) do
   add_index "vehicles", ["profile_id"], name: "index_vehicles_on_profile_id", using: :btree
   add_index "vehicles", ["vehicle_type_id"], name: "index_vehicles_on_vehicle_type_id", using: :btree
 
+  add_foreign_key "addresses", "districts"
+  add_foreign_key "addresses", "profiles"
   add_foreign_key "profiles", "user_types"
   add_foreign_key "vehicles", "profiles"
   add_foreign_key "vehicles", "vehicle_types"

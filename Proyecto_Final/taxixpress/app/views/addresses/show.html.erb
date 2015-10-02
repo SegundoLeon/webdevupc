@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @address.name %>
+</p>
+
+<p>
+  <strong>Reference:</strong>
+  <%= @address.reference %>
+</p>
+
+<p>
+  <strong>Alias:</strong>
+  <%= @address.alias %>
+</p>
+
+<p>
+  <strong>Favourite:</strong>
+  <%= @address.favourite %>
+</p>
+
+<p>
+  <strong>Profile:</strong>
+  <%= @address.profile %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @address.district %>
+</p>
+
+<%= link_to 'Edit', edit_address_path(@address) %> |
+<%= link_to 'Back', addresses_path %>
