@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001040450) do
+ActiveRecord::Schema.define(version: 20151002211715) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.string   "reference",   limit: 255
     t.string   "alias",       limit: 255
-    t.string   "string",      limit: 255
     t.boolean  "favourite",   limit: 1
     t.integer  "profile_id",  limit: 4
     t.integer  "district_id", limit: 4

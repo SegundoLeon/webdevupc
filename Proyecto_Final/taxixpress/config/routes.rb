@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :addresses
+  resources :addresses
   resources :districts
   resources :vehicles
   resources :payment_methods
