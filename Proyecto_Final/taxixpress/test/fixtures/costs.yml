@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  estimated_cost: 1
+  from_district_id: 
+  to_district_id: 
+
+two:
+  estimated_cost: 1
+  from_district_id: 
+  to_district_id: 
