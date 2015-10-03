@@ -33,12 +33,6 @@ ActiveRecord::Schema.define(version: 20151002211715) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "distrits", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "payment_methods", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
