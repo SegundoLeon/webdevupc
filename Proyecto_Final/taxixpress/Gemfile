@@ -55,5 +55,10 @@ gem 'less-rails'
 
 gem 'twitter-bootstrap-rails'
 
+# Authentication Support
 gem 'devise'
+gem 'devise-bootstrap-views'
+
+# Administration Section Support
+gem  'rails_admin'
 
