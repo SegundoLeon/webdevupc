@@ -47,12 +47,9 @@ end
 #Form Management Support
 gem 'simple_form'
 
-
 #Twitter Bootstrap Framework Support
 gem 'therubyracer'
-
 gem 'less-rails'
-
 gem 'twitter-bootstrap-rails'
 
 # Authentication Support
@@ -61,4 +58,5 @@ gem 'devise-bootstrap-views'
 
 # Administration Section Support
 gem  'rails_admin'
+
 
