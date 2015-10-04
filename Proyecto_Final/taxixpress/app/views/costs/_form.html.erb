@@ -1,10 +1,10 @@
 <%= simple_form_for @cost, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :estimated_cost %>
   <%= error_span(@cost[:estimated_cost]) %>
-  <%= f.input :from_district_id %>
-  <%= error_span(@cost[:from_district_id]) %>
-  <%= f.input :to_district_id %>
-  <%= error_span(@cost[:to_district_id]) %>
+  <%= f.association :from_district %>
+  <%= error_span(@cost[:from_district_name]) %>
+  <%= f.association :to_district %>
+  <%= error_span(@cost[:to_district_name]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

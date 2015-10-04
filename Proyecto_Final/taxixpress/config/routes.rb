@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   #resources :addresses
 
   resources :costs
-  root 'home#index'
   #resources :addresses
 
   resources :districts
