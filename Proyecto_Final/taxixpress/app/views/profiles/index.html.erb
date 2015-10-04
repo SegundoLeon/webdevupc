@@ -21,7 +21,7 @@
         <td><%= profile.name %></td>
         <td><%= profile.email %></td>
         <td><%= profile.mobilephone %></td>
-        <td><%= profile.user_type_id %></td>
+        <td><%= profile.user_type.name %></td>
         <td><%=l profile.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
