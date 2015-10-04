@@ -1,0 +1,32 @@
+<%= simple_form_for @service, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :profile_id %>
+  <%= error_span(@service[:profile_id]) %>
+  <%= f.input :from_address_id %>
+  <%= error_span(@service[:from_address_id]) %>
+  <%= f.input :to_address_id %>
+  <%= error_span(@service[:to_address_id]) %>
+  <%= f.input :date_time %>
+  <%= error_span(@service[:date_time]) %>
+  <%= f.input :payment %>
+  <%= error_span(@service[:payment]) %>
+  <%= f.input :passengers %>
+  <%= error_span(@service[:passengers]) %>
+  <%= f.input :vehicle_type_id %>
+  <%= error_span(@service[:vehicle_type_id]) %>
+  <%= f.input :payment_method_id %>
+  <%= error_span(@service[:payment_method_id]) %>
+  <%= f.input :service_code %>
+  <%= error_span(@service[:service_code]) %>
+  <%= f.input :vehicle_id %>
+  <%= error_span(@service[:vehicle_id]) %>
+  <%= f.input :rate %>
+  <%= error_span(@service[:rate]) %>
+  <%= f.input :experience %>
+  <%= error_span(@service[:experience]) %>
+  <%= f.input :status %>
+  <%= error_span(@service[:status]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                services_path, :class => 'btn btn-default' %>
+<% end %>
