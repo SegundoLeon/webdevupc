@@ -1,14 +1,21 @@
 Rails.application.routes.draw do
 
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   resources :addresses
   #resources :addresses
+
+  resources :costs
+  root 'home#index'
+  #resources :addresses
+
   resources :districts
   resources :vehicles
   resources :payment_methods
   resources :profiles
   resources :user_types
+  #resources :vehicle_types
   
   resources :vehicle_types
 
@@ -65,10 +72,7 @@ Rails.application.routes.draw do
   #   resources :posts, concerns: :toggleable
   #   resources :photos, concerns: :toggleable
 
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  
+
+
 end

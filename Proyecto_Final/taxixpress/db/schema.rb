@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20151004012924) do
+
+ActiveRecord::Schema.define(version: 20151003182630) do
+
 
   create_table "addresses", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -26,6 +30,16 @@ ActiveRecord::Schema.define(version: 20151004012924) do
 
   add_index "addresses", ["district_id"], name: "index_addresses_on_district_id", using: :btree
   add_index "addresses", ["profile_id"], name: "index_addresses_on_profile_id", using: :btree
+
+  create_table "costs", force: :cascade do |t|
+    t.integer  "estimated_cost",   limit: 4
+    t.integer  "from_district_id", limit: 4
+    t.integer  "to_district_id",   limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+
 
   create_table "districts", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -111,4 +125,5 @@ ActiveRecord::Schema.define(version: 20151004012924) do
   add_foreign_key "profiles", "user_types"
   add_foreign_key "vehicles", "profiles"
   add_foreign_key "vehicles", "vehicle_types"
+end
 end
