@@ -13,5 +13,4 @@ Rails.application.routes.draw do
   resources :vehicle_types
   root 'home#index'
   get 'home/aboutus', controller: :home, action: :aboutus, as: 'aboutus'
-
 end
