@@ -5,6 +5,11 @@
 
   <div class="form-inputs">
     
+    <% if current_user.user_type_id != 1 %>
+      <%= f.association :user_type %>
+      <%= error_span(@user[:user_type_id]) %>
+    <% end %>
+    
     <%= f.input :name, required: true, autofocus: true %>
     <%= f.input :surname, required: true, autofocus: true %>
     <%= f.input :email, required: true, autofocus: true %>

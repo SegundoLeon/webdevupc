@@ -6,6 +6,10 @@ class UserTypesController < ApplicationController
   def index
     @user_types = UserType.all
   end
+  
+  def user
+  end
+  
 
   # GET /user_types/1
   # GET /user_types/1.json

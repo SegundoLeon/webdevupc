@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20151004012924) do
-
+ActiveRecord::Schema.define(version: 20151004183650) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -113,10 +111,12 @@ ActiveRecord::Schema.define(version: 20151004012924) do
     t.string   "address",                limit: 255
     t.string   "marital_status",         limit: 255
     t.string   "company",                limit: 255
+    t.integer  "user_type_id",           limit: 4,                  default: 1
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["user_type_id"], name: "index_users_on_user_type_id", using: :btree
 
   create_table "vehicle_types", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(version: 20151004012924) do
   add_foreign_key "services", "profiles"
   add_foreign_key "services", "vehicle_types"
   add_foreign_key "services", "vehicles"
+  add_foreign_key "users", "user_types"
   add_foreign_key "vehicles", "profiles"
   add_foreign_key "vehicles", "vehicle_types"
 end
