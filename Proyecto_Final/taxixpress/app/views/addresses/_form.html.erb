@@ -8,10 +8,7 @@
   <%= f.input :favourite %>
   <%= error_span(@address[:favourite]) %>
   
-  
-  
-  
-  
+ 
   
   <%= f.association :district %>
   <%= error_span(@address[:district_name]) %>
@@ -20,3 +17,4 @@
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 addresses_path, :class => 'btn btn-default' %>
 <% end %>
+

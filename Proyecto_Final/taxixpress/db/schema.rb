@@ -18,14 +18,14 @@ ActiveRecord::Schema.define(version: 20151004183650) do
     t.string   "reference",   limit: 255
     t.string   "alias",       limit: 255
     t.boolean  "favourite",   limit: 1
-    t.integer  "profile_id",  limit: 4
+    t.integer  "user_id",     limit: 4
     t.integer  "district_id", limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
 
   add_index "addresses", ["district_id"], name: "index_addresses_on_district_id", using: :btree
-  add_index "addresses", ["profile_id"], name: "index_addresses_on_profile_id", using: :btree
+  add_index "addresses", ["user_id"], name: "index_addresses_on_user_id", using: :btree
 
   create_table "costs", force: :cascade do |t|
     t.integer  "estimated_cost",   limit: 4
@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(version: 20151004183650) do
   add_index "vehicles", ["vehicle_type_id"], name: "index_vehicles_on_vehicle_type_id", using: :btree
 
   add_foreign_key "addresses", "districts"
-  add_foreign_key "addresses", "profiles"
+  add_foreign_key "addresses", "users"
   add_foreign_key "profiles", "user_types"
   add_foreign_key "services", "payment_methods"
   add_foreign_key "services", "profiles"
