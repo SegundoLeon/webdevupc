@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20151004012924) do
-
+ActiveRecord::Schema.define(version: 20151004025117) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -60,6 +58,29 @@ ActiveRecord::Schema.define(version: 20151004012924) do
   end
 
   add_index "profiles", ["user_type_id"], name: "index_profiles_on_user_type_id", using: :btree
+
+  create_table "reserves", force: :cascade do |t|
+    t.integer  "profile_id",        limit: 4
+    t.integer  "from_address_id",   limit: 4
+    t.integer  "to_address_id",     limit: 4
+    t.datetime "date_time"
+    t.integer  "payment",           limit: 4
+    t.integer  "passengers",        limit: 4
+    t.integer  "vehicle_type_id",   limit: 4
+    t.integer  "payment_method_id", limit: 4
+    t.string   "reservation_code",  limit: 255
+    t.integer  "vehicle_id",        limit: 4
+    t.integer  "rate",              limit: 4
+    t.text     "experience",        limit: 65535
+    t.string   "status",            limit: 255
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "reserves", ["payment_method_id"], name: "index_reserves_on_payment_method_id", using: :btree
+  add_index "reserves", ["profile_id"], name: "index_reserves_on_profile_id", using: :btree
+  add_index "reserves", ["vehicle_id"], name: "index_reserves_on_vehicle_id", using: :btree
+  add_index "reserves", ["vehicle_type_id"], name: "index_reserves_on_vehicle_type_id", using: :btree
 
   create_table "services", force: :cascade do |t|
     t.integer  "profile_id",        limit: 4
@@ -142,6 +163,10 @@ ActiveRecord::Schema.define(version: 20151004012924) do
   add_foreign_key "addresses", "districts"
   add_foreign_key "addresses", "profiles"
   add_foreign_key "profiles", "user_types"
+  add_foreign_key "reserves", "payment_methods"
+  add_foreign_key "reserves", "profiles"
+  add_foreign_key "reserves", "vehicle_types"
+  add_foreign_key "reserves", "vehicles"
   add_foreign_key "services", "payment_methods"
   add_foreign_key "services", "profiles"
   add_foreign_key "services", "vehicle_types"
