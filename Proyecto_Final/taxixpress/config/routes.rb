@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   resources :user_types
   resources :vehicle_types
 
+  #get 'services/customer', controller: :services, action: :customer, as: :customer
 
 end
