@@ -52,6 +52,7 @@
           <% end %>
         </p>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <%= image_tag "logotaxixpress.png" %>
           <ul class="nav navbar-nav">
             <li><a class="navbar-brand" href=<%= root_path %>>Home</a></li>
             <li><%= link_to "About Us", aboutus_path  %></li>
@@ -70,8 +71,11 @@
         </div>
         <div class="col-lg-3">
           <div class="well sidebar-nav">
-            <h4>¿Qué desea hacer?</h4>
+            <h4>¿What would you like to do?</h4>
             <ul class="nav nav-list">
+              <li><%= link_to "Servicios Clientes", services_path %></li>
+              <li><%= link_to "Servicios Operadores", services_path+'?user=o' %></li>
+              <li><%= link_to "Servicios Taxistas", services_path+'?user=t' %></li>
               <% if current_user %>
               <li><%= link_to "Payment Methods", payment_methods_path  %></li>
               <li><%= link_to "Profiles", profiles_path  %></li>
@@ -89,20 +93,10 @@
       </div><!--/row-->
 
       <footer>
-        <p>&copy; Company 2015</p>
+        <p>&copy; Web Solution 2015</p>
       </footer>
 
     </div> <!-- /container -->
     
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
