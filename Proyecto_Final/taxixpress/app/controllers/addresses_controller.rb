@@ -4,7 +4,7 @@ class AddressesController < ApplicationController
   # GET /addresses
   # GET /addresses.json
   def index
-    @addresses = Address.where(user_id: $codeuser, favourite: true)
+    @addresses = Address.where(user_id: current_user.id, favourite: true)
     #render :text => @addresses.size
     #Address.find_by_sql("SELECT * FROM addresses WHERE user_id =?", $iduser)
   end
@@ -52,7 +52,7 @@ class AddressesController < ApplicationController
       end
     end
   end
-
+  
   # DELETE /addresses/1
   # DELETE /addresses/1.json
   def destroy
@@ -71,7 +71,6 @@ class AddressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def address_params
-      @user_id = current_user.id
       params.require(:address).permit(:name, :reference, :alias, :favourite, :user_id, :district_id)
     end
 end

@@ -1,6 +1,6 @@
 <%= simple_form_for @service, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.association :profile %>
-  <%= error_span(@service[:profile_name]) %>
+  <%= f.association :user %>
+  <%= error_span(@service[:user_name]) %>
   <%= f.association :from_address %>
   <%= error_span(@service[:from_address_name]) %>
   <%= f.association :to_address %>

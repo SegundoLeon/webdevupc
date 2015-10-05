@@ -8,7 +8,7 @@ class ServicesController < ApplicationController
     if @user == 'o' or @user == 't'
       @services = Service.all      
     else
-      @services = Service.where(profile_id: $codeuser).order(created_at: :desc).limit(10)
+      @services = Service.where(user_id: $user_id).order(created_at: :desc).limit(10)
     end
   end
  
@@ -74,6 +74,6 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:profile_id, :from_address_id, :to_address_id, :date_time, :payment, :passengers, :vehicle_type_id, :payment_method_id, :service_code, :vehicle_id, :rate, :experience, :status)
+      params.require(:service).permit(:user_id, :from_address_id, :to_address_id, :date_time, :payment, :passengers, :vehicle_type_id, :payment_method_id, :service_code, :vehicle_id, :rate, :experience, :status)
     end
 end

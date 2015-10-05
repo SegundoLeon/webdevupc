@@ -1,7 +1,7 @@
 class CreateServices < ActiveRecord::Migration
   def change
     create_table :services do |t|
-      t.references :profile, index: true, foreign_key: true
+      t.references :user, index: true, foreign_key: true
       t.references :from_address
       t.references :to_address
       t.datetime :date_time

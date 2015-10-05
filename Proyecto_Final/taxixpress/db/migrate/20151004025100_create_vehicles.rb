@@ -5,7 +5,7 @@ class CreateVehicles < ActiveRecord::Migration
       t.string :model
       t.string :plate
       t.string :status
-      t.references :profile, index: true, foreign_key: true
+      t.references :user, index: true, foreign_key: true
       t.references :vehicle_type, index: true, foreign_key: true
 
       t.timestamps null: false

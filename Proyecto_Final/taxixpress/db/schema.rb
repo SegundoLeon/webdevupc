@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20151004183650) do
   add_index "profiles", ["user_type_id"], name: "index_profiles_on_user_type_id", using: :btree
 
   create_table "services", force: :cascade do |t|
-    t.integer  "profile_id",        limit: 4
+    t.integer  "user_id",           limit: 4
     t.integer  "from_address_id",   limit: 4
     t.integer  "to_address_id",     limit: 4
     t.datetime "date_time"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20151004183650) do
   end
 
   add_index "services", ["payment_method_id"], name: "index_services_on_payment_method_id", using: :btree
-  add_index "services", ["profile_id"], name: "index_services_on_profile_id", using: :btree
+  add_index "services", ["user_id"], name: "index_services_on_user_id", using: :btree
   add_index "services", ["vehicle_id"], name: "index_services_on_vehicle_id", using: :btree
   add_index "services", ["vehicle_type_id"], name: "index_services_on_vehicle_type_id", using: :btree
 
@@ -130,23 +130,23 @@ ActiveRecord::Schema.define(version: 20151004183650) do
     t.string   "model",           limit: 255
     t.string   "plate",           limit: 255
     t.string   "status",          limit: 255
-    t.integer  "profile_id",      limit: 4
+    t.integer  "user_id",         limit: 4
     t.integer  "vehicle_type_id", limit: 4
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
 
-  add_index "vehicles", ["profile_id"], name: "index_vehicles_on_profile_id", using: :btree
+  add_index "vehicles", ["user_id"], name: "index_vehicles_on_user_id", using: :btree
   add_index "vehicles", ["vehicle_type_id"], name: "index_vehicles_on_vehicle_type_id", using: :btree
 
   add_foreign_key "addresses", "districts"
   add_foreign_key "addresses", "users"
   add_foreign_key "profiles", "user_types"
   add_foreign_key "services", "payment_methods"
-  add_foreign_key "services", "profiles"
+  add_foreign_key "services", "users"
   add_foreign_key "services", "vehicle_types"
   add_foreign_key "services", "vehicles"
   add_foreign_key "users", "user_types"
-  add_foreign_key "vehicles", "profiles"
+  add_foreign_key "vehicles", "users"
   add_foreign_key "vehicles", "vehicle_types"
 end

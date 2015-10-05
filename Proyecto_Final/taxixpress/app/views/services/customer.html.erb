@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:profile_id) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
       <th><%= model_class.human_attribute_name(:from_address_id) %></th>
       <th><%= model_class.human_attribute_name(:to_address_id) %></th>
       <th><%= model_class.human_attribute_name(:date_time) %></th>
@@ -27,7 +27,7 @@
     <% @services.each do |service| %>
       <tr>
         <td><%= link_to service.id, service_path(service) %></td>
-        <td><%= service.profile.name %></td>
+        <td><%= service.user.name %></td>
         <td><%= service.from_address.name %></td>
         <td><%= service.to_address.name %></td>
         <td><%= service.date_time %></td>

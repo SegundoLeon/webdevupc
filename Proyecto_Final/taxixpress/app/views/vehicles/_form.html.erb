@@ -7,8 +7,8 @@
   <%= error_span(@vehicle[:plate]) %>
   <%= f.input :status %>
   <%= error_span(@vehicle[:status]) %>
-  <%= f.association :profile %>
-  <%= error_span(@vehicle[:profile_name]) %>
+  <%= f.association :user %>
+  <%= error_span(@vehicle[:user_id]) %>
   <%= f.association :vehicle_type %>
   <%= error_span(@vehicle[:vehicle_type_name]) %>
 
