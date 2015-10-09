@@ -37,11 +37,19 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body>
+      
     <div class="navbar navbar-default navbar-static-top tamanio">
+      
+      
+      
+      
+      
       <div class="container" align=right>
-        <a class="logo-left" href=<%= root_path %>>
+          <a class="logo-left" href=<%= root_path %>>
           <%= image_tag "logotaxixpress.png" %>
-        </a>
+          </a>
+        
+        
         <p class="navbar-text navbar-right" >
           <% if current_user %>
             Signed in as <%= current_user.name %> <%= current_user.surname %>
@@ -55,11 +63,21 @@
             <%= d = DateTime.now.in_time_zone('Lima') %>
           <% end %>
         </p>
+       
+   
+        
       </div>
+        
+        
       <ol class="breadcrumb centro">
         <li><%= render partial: 'layouts/menu' %></li>
+        
       </ol>
+ 
+
       </div>
+      
+ 
     <div class="container">
       <div class="row">
         <div class="col-lg-9">
@@ -68,34 +86,23 @@
         </div>
         <div class="col-lg-3">
           <div class="well sidebar-nav">
-            <% if current_user && current_user.user_type.name == "Operador" %>
-              <h4>System Options</h4>
-              <ul class="nav nav-list">              
-                <li><%= link_to "Clients Services", services_path %></li>
-                <li><%= link_to "Operators Services", services_path+'?user=o' %></li>
-                <li><%= link_to "Taxi driver Services", services_path+'?user=t' %></li>
-                <li><%= link_to "User Types", user_types_path  %></li>
-                <li><%= link_to "Payment Methods", payment_methods_path  %></li>
-                <li><%= link_to "Profiles", profiles_path  %></li>
-                <li><%= link_to "Vehicle Types", vehicle_types_path  %></li>
-                <li><%= link_to "Vehicles", vehicles_path  %></li>
-                <li><%= link_to "Districts", districts_path  %></li>
-                <li><%= link_to "Costs", costs_path  %></li>
-              </ul>
-            <% end %>
-            <% if current_user && current_user.user_type.name == "Cliente" %>
             <h4>¿What would you like to do?</h4>
             <ul class="nav nav-list">
-              <li><%= link_to "My favorite address", addresses_path  %></li>
-              <li><%= link_to "My services", services_path  %></li>
+              <li><%= link_to "Clients Services", services_path %></li>
+              <li><%= link_to "Operators Services", services_path+'?user=o' %></li>
+              <li><%= link_to "Taxi driver Services", services_path+'?user=t' %></li>
+              <% if current_user %>
+              <li><%= link_to "Payment Methods", payment_methods_path  %></li>
+              <li><%= link_to "Profiles", profiles_path  %></li>
+              <li><%= link_to "User Types", user_types_path  %></li>
+              <li><%= link_to "Vehicle Types", vehicle_types_path  %></li>
+              <li><%= link_to "Vehicles", vehicles_path  %></li>
+              <li><%= link_to "Districts", districts_path  %></li>
+              <li><%= link_to "Address", addresses_path  %></li>
+              <li><%= link_to "Costs", costs_path  %></li>
+              <li><%= link_to "Services", services_path  %></li>
+              <% end %>
             </ul>
-            <% end %>
-            <% if current_user && current_user.user_type.name == "Taxista" %>
-            <h4>Services</h4>
-            <ul class="nav nav-list">
-              <li><%= link_to "Assigned services", services_path  %></li>
-            </ul>
-            <% end %>            
           </div><!--/.well -->
         </div><!--/span-->
       </div><!--/row-->
@@ -106,9 +113,8 @@
 
     </div> <!-- /container -->
 
+
     
   </body>
 </html>
-
-
 
