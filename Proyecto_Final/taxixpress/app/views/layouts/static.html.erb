@@ -85,6 +85,7 @@
             <% if current_user && current_user.user_type.name == "Cliente" %>
             <h4>¿What would you like to do?</h4>
             <ul class="nav nav-list">
+<<<<<<< HEAD
               <li><%= link_to "My favorite address", addresses_path  %></li>
               <li><%= link_to "My services", services_path  %></li>
             </ul>
@@ -93,6 +94,21 @@
             <h4>Services</h4>
             <ul class="nav nav-list">
               <li><%= link_to "Assigned services", services_path  %></li>
+=======
+              <li><%= link_to "Clients Services", services_path %></li>
+              <li><%= link_to "Operators Services", services_path+'?user=o' %></li>
+              <li><%= link_to "Taxi driver Services", services_path+'?user=t' %></li>
+              <% if current_user %>
+              <li><%= link_to "Payment Methods", payment_methods_path  %></li>
+              <li><%= link_to "Profiles", profiles_path  %></li>
+              <li><%= link_to "User Types", user_types_path  %></li>
+              <li><%= link_to "Vehicle Types", vehicle_types_path  %></li>
+              <li><%= link_to "Districts", districts_path  %></li>
+              <li><%= link_to "Address", addresses_path  %></li>
+              <li><%= link_to "Costs", costs_path  %></li>
+              <li><%= link_to "Services", services_path  %></li>
+              <% end %>
+>>>>>>> rama2
             </ul>
             <% end %>            
           </div><!--/.well -->

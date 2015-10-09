@@ -8,4 +8,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :name, presence:true
   validates :surname, presence:true
+  
+  # User Roles
+  enum role: [:user, :operator, :admin]
+  
+  # Method to verify if user has the operator or admin role
+  def admin_or_operator?
+    self.admin? || self.operator?
+  end
+  
 end

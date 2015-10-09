@@ -34,7 +34,7 @@
         <td><%= service.service_code %></td>        
         <td><%= service.date_time.strftime("%d/%m/%Y %I:%M %p") %></td>
         <% if @user=='o' or @user=='t' %>
-          <td><%= service.profile.name %></td>
+          <td><%= service.user.name %></td>
         <% end %>
         <td><%= service.from_address.name %></td>
         <td><%= service.payment %></td>        
