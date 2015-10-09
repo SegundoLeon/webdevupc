@@ -4,7 +4,8 @@ class VehiclesController < ApplicationController
   # GET /vehicles
   # GET /vehicles.json
   def index
-    @vehicles = Vehicle.all
+    @vehicle_type = VehicleType.find(params[:vehicle_type_id])
+    @vehicles = @vehicle_type.vehicles
   end
 
   # GET /vehicles/1
@@ -14,7 +15,8 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles/new
   def new
-    @vehicle = Vehicle.new
+    @vehicle_type = VehicleType.find(params[:vehicle_type_id])
+    @vehicle = @vehicle_type.vehicles.build
   end
 
   # GET /vehicles/1/edit
@@ -28,7 +30,7 @@ class VehiclesController < ApplicationController
 
     respond_to do |format|
       if @vehicle.save
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
+        format.html { redirect_to vehicle_type_vehicles_url(@vehicle.vehicle_type, @vehicle), notice: 'Vehicle was successfully created.' }
         format.json { render :show, status: :created, location: @vehicle }
       else
         format.html { render :new }
