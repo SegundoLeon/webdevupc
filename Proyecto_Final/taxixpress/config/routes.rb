@@ -27,5 +27,4 @@ Rails.application.routes.draw do
   resources :vehicle_types do
     resources :vehicles
   end
-  
 end
