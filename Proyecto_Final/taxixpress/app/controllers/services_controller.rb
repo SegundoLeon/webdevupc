@@ -12,9 +12,9 @@ class ServicesController < ApplicationController
       when "Cliente"
         @services = Service.where(user_id: current_user.id).order(created_at: :desc).limit(10)
       when "Operador"
-        @services = Service.all
+        @services = Service.all.paginate(page: params[:page], per_page: 5)
       when "Taxista"
-        @services = Service.all
+        @services = Service.all.paginate(page: params[:page], per_page: 5)
         #@services = Service.where(vehicle_id: current_user.vehicle.user_id)
     end
   end
@@ -47,6 +47,7 @@ class ServicesController < ApplicationController
         format.json { render json: @service.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   # PATCH/PUT /services/1
@@ -81,6 +82,6 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:user_id, :from_address_id, :to_address_id, :date_time, :payment, :passengers, :vehicle_type_id, :payment_method_id, :service_code, :vehicle_id, :rate, :experience, :status)
+      params.require(:service).permit(:user_id, :from_address_id, :to_address_id, :date_time, :payment, :passengers, :vehicle_type_id, :payment_method_id, :service_code, :rate, :experience, :status)
     end
 end

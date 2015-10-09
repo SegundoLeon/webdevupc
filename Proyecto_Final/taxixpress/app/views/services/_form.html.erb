@@ -1,6 +1,6 @@
 <%= simple_form_for @service, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.association :user %>
-  <%= error_span(@service[:user_name]) %>
+  <%= f.input :user_id , :as => :hidden, input_html: { value: current_user.id } %>
+  <%= error_span(@service[:user_id]) %>
   <%= f.association :from_address %>
   <%= error_span(@service[:from_address_name]) %>
   <%= f.association :to_address %>
@@ -17,8 +17,6 @@
   <%= error_span(@service[:payment_method_name]) %>
   <%= f.input :service_code %>
   <%= error_span(@service[:service_code]) %>
-  <%= f.association :vehicle %>
-  <%= error_span(@service[:vehicle_name]) %>
   <%= f.input :rate %>
   <%= error_span(@service[:rate]) %>
   <%= f.input :experience %>

@@ -59,4 +59,7 @@ gem 'devise-bootstrap-views'
 # Administration Section Support
 gem  'rails_admin'
 
+# Paginación
+gem 'will_paginate'
+
 
