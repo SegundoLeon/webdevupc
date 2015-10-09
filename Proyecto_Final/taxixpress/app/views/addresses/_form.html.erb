@@ -5,10 +5,9 @@
   <%= error_span(@address[:reference]) %>
   <%= f.input :alias %>
   <%= error_span(@address[:alias]) %>
-  <%= f.input :favourite %>
+  <%= f.input :favourite, :as => :hidden, input_html: { value: "1" }  %>
   <%= error_span(@address[:favourite]) %>
-  
-  <%= f.association :user %>
+  <%= f.input :user_id, :as => :hidden, input_html: { value: current_user.id } %>
   <%= error_span(@address[:user_id]) %>
   
   

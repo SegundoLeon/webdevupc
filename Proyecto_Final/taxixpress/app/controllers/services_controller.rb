@@ -5,10 +5,16 @@ class ServicesController < ApplicationController
   # GET /services.json
   def index
     @user = params[:user]
-    if @user == 'o' or @user == 't'
-      @services = Service.all      
-    else
-      @services = Service.where(user_id: $user_id).order(created_at: :desc).limit(10)
+    #render :text => current_user.vehicle
+    
+    case current_user.user_type.name
+      when "Cliente"
+        @services = Service.where(user_id: current_user.id).order(created_at: :desc).limit(10)
+      when "Operador"
+        @services = Service.all
+      when "Taxista"
+        @services = Service.all
+        #@services = Service.where(vehicle_id: current_user.vehicle.user_id)
     end
   end
  
