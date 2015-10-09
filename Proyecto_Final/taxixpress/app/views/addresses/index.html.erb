@@ -10,7 +10,6 @@
       <th><%= model_class.human_attribute_name(:reference) %></th>
       <th><%= model_class.human_attribute_name(:alias) %></th>
       <th><%= model_class.human_attribute_name(:favourite) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
       <th><%= model_class.human_attribute_name(:district_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -24,7 +23,6 @@
         <td><%= address.reference %></td>
         <td><%= address.alias %></td>
         <td><%= address.favourite %></td>
-        <td><%= address.user_id %></td>
         <td><%= address.district_id %></td>
         <td><%=l address.created_at %></td>
         <td>
