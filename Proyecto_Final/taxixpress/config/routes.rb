@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   #get 'static/about'
-  
   #get 'static/services'
-
   #get 'static/contact'
   
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
