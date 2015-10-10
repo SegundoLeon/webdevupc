@@ -83,10 +83,10 @@
               </ul>
             <% end %>
             <% if current_user && current_user.user_type.name == "Cliente" %>
-            <h4>¿What would you like to do?</h4>
+            <h4>My Options</h4>
             <ul class="nav nav-list">
-              <li><%= link_to "My favorite address", addresses_path  %></li>
               <li><%= link_to "My services", services_path %></li>
+              <li><%= link_to "My favorite address", addresses_path  %></li>
             </ul>
             <% end %>
             <% if current_user && current_user.user_type.name == "Taxista" %>

@@ -26,8 +26,9 @@ class ServicesController < ApplicationController
           when "4"
             @text = "Canceled"
             @services = Service.where(status: "Cancelado").paginate(page: params[:page], per_page: 10)
-          #else
-          #  @services = Service.all.paginate(page: params[:page], per_page: 10)
+          else
+            @text = " - All"
+            @services = Service.all.paginate(page: params[:page], per_page: 10)
         end
       when "Taxista"
         #render :text => @car.id

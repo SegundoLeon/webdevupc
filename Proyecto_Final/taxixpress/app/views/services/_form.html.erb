@@ -63,8 +63,9 @@
   <% if @service[:status].nil? %>
     <%= f.input :status, :as => :hidden, input_html: { readonly: true, value: "Solicitado"} %>
   <% else %>
-    <% if current_user.user_type.name == "Cliente"  %>
-      <%= f.input :status, input_html: { readonly: true} %>
+    <% if current_user.user_type.name == "Cliente" && @service[:status] == "Solicitado" %>
+      <!--<%= f.input :status, input_html: { readonly: true} %>-->
+      <%= f.input :status, :collection => ['Solicitado','Cancelado'] %>
     <% else %>
       <%= f.input :status, :collection => ['Solicitado','Asignado','Atendido','Cancelado'] %>
     <% end %>
