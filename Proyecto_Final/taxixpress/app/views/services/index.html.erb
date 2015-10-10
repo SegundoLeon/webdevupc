@@ -19,11 +19,12 @@
       <th><%= model_class.human_attribute_name(:from_address_id) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
-      
+
       <!--<th><%= model_class.human_attribute_name(:payment) %></th>-->
       <!--<th><%= model_class.human_attribute_name(:vehicle_id) %></th><--></-->
       <!--<th><%= model_class.human_attribute_name(:user_id) %></th>-->
       <!--<th><%= model_class.human_attribute_name(:created_at) %></th> -->     
+      <!--<th><%= model_class.human_attribute_name(:to_address_id) %></th>-->
       <!--<th><%= model_class.human_attribute_name(:to_address_id) %></th>-->
       <!--<th><%= model_class.human_attribute_name(:passengers) %></th>-->
       <!--<th><%= model_class.human_attribute_name(:vehicle_type_id) %></th>-->
@@ -39,10 +40,8 @@
         <td><%= link_to service.id, service_path(service) %></td>
         <td><%= service.service_code %></td>        
         <td><%= service.date_time.strftime("%d/%m/%Y %I:%M %p") %></td>
-          
         <td><%= service.from_address.name %></td>
         <td><%= service.status %></td>
-        
         
         <!--<td><%= service.user_id %></td>-->  
         <!--<td><%= service.payment %></td>-->        
@@ -65,9 +64,18 @@
         </td>
       </tr>
     <% end %>
+    
   </tbody>
+  
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<nav align=center>
+  <ul class="pagination">
+    <%= link_to t('.new', :default => t("helpers.links.new")),
             new_service_path,
             :class => 'btn btn-primary' %>
+    <% if current_user.user_type.name == "Operador" || current_user.user_type.name == "Taxista" %>
+      <%= will_paginate @services %>
+    <% end %>
+  </ul>
+</nav>

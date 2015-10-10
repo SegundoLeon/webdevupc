@@ -10,4 +10,13 @@ class Address < ActiveRecord::Base
   validates :district, presence:true
   
   #scope :myuser, -> { where(profile_id: myuser) }
+  
+  def district_name
+      self.district.name
+  end
+  
+  def user_name
+      self.user.name
+  end
+  
 end

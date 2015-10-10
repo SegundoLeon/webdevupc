@@ -32,7 +32,7 @@
 
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+    <%= favicon_link_tag 'taxi.jpg', :rel => 'shortcut icon' %>
 
     <%= javascript_include_tag "application" %>
   </head>
@@ -76,9 +76,7 @@
                 <li><%= link_to "Taxi driver Services", services_path+'?user=t' %></li>
                 <li><%= link_to "User Types", user_types_path  %></li>
                 <li><%= link_to "Payment Methods", payment_methods_path  %></li>
-                <li><%= link_to "Profiles", profiles_path  %></li>
                 <li><%= link_to "Vehicle Types", vehicle_types_path  %></li>
-                <li><%= link_to "Vehicles", vehicles_path  %></li>
                 <li><%= link_to "Districts", districts_path  %></li>
                 <li><%= link_to "Costs", costs_path  %></li>
               </ul>

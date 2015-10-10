@@ -8,7 +8,7 @@
   <%= f.input :favourite, :as => :hidden, input_html: { value: "1" }  %>
   <%= error_span(@address[:favourite]) %>
   <%= f.input :user_id, :as => :hidden, input_html: { value: current_user.id } %>
-  <%= error_span(@address[:user_id]) %>
+  <%= error_span(@address[:user_name]) %>
   
   
   
