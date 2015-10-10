@@ -1,18 +1,12 @@
 <%= simple_form_for @service, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :user_id, :as => :hidden, input_html: { value: current_user.id } %>
-  <%= error_span(@service[:user_id]) %>
-
-  <% if current_user.user_type.name == "Cliente"  %>
-    <%= f.association :from_address, collection: Address.where('user_id =?',current_user.id) %>
-    <%= error_span(@service[:from_address_name]) %>
-    
-    <%= f.association :to_address, collection: Address.where('user_id =?',current_user.id) %>
-    <%= error_span(@service[:to_address_name]) %>  
+  <% if current_user.user_type.name == "Cliente" && @service[:status].nil? %>
+    <%= f.input :user_id, :as => :hidden, input_html: { value: current_user.id } %><%= error_span(@service[:user_id]) %>
+    <%= f.association :from_address, collection: Address.where('user_id =?',current_user.id) %><%= error_span(@service[:from_address_name]) %>
+    <%= f.association :to_address, collection: Address.where('user_id =?',current_user.id) %><%= error_span(@service[:to_address_name]) %>  
   <% else %>
-    <%= f.association :from_address %>
-    <%= error_span(@service[:from_address_name]) %>
-    <%= f.association :to_address %>
-    <%= error_span(@service[:to_address_name]) %>    
+    <%= f.association :user, input_html: { readonly: true } %><%= error_span(@service[:user_name]) %>
+    <%= f.association :from_address %><%= error_span(@service[:from_address_name]) %>
+    <%= f.association :to_address %><%= error_span(@service[:to_address_name]) %>    
   <% end %>
   
   <%= f.input :date_time %>

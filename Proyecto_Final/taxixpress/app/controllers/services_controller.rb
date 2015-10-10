@@ -12,6 +12,7 @@ class ServicesController < ApplicationController
     case current_user.user_type.name
       when "Cliente"
         @services = Service.where(user_id: current_user.id).order(created_at: :desc).limit(10)
+        #render :text => @services.length
       when "Operador"
         case @rpt
           when "1"
