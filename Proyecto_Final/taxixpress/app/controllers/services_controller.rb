@@ -5,17 +5,33 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
-    @user = params[:user]
+    @rpt = params[:rpt]
+    @text = ""
     #render :text => current_user.vehicle
     
     case current_user.user_type.name
       when "Cliente"
         @services = Service.where(user_id: current_user.id).order(created_at: :desc).limit(10)
       when "Operador"
-        @services = Service.all.paginate(page: params[:page], per_page: 5)
+        case @rpt
+          when "1"
+            @text = "Unassigned"
+            @services = Service.where(status: "Solicitado").paginate(page: params[:page], per_page: 10)
+          when "2"
+            @text = "Assigned"
+            @services = Service.where(status: "Asignado").paginate(page: params[:page], per_page: 10)
+          when "3"
+            @text = "Attended"
+            @services = Service.where(status: "Atendido").paginate(page: params[:page], per_page: 10)
+          when "4"
+            @text = "Canceled"
+            @services = Service.where(status: "Cancelado").paginate(page: params[:page], per_page: 10)
+          #else
+          #  @services = Service.all.paginate(page: params[:page], per_page: 10)
+        end
       when "Taxista"
         #render :text => @car.id
-        @services = Service.where(vehicle_id: $car).paginate(page: params[:page], per_page: 5)
+        @services = Service.where(vehicle_id: $car).paginate(page: params[:page], per_page: 10)
         #@services = Service.all.paginate(page: params[:page], per_page: 5)
     end
   end

@@ -5,8 +5,8 @@
   <% else %>
     <% if current_user.user_type.name == "Taxista" %>
       <h1>My <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> Assigned</h1>
-    <% else %>
-      <h1>All <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> Requested</h1>
+    <% else %> <!--Si ingresa un operador -->
+      <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> <%= @text %></h1>
     <% end %>
   <% end %>
 </div>
