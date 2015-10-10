@@ -1,6 +1,14 @@
 <%- model_class = Service -%>
 <div class="page-header">
-  <h1>My <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <% if current_user.user_type.name == "Cliente" %>
+    <h1>My <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> Requested</h1>
+  <% else %>
+    <% if current_user.user_type.name == "Taxista" %>
+      <h1>My <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> Assigned</h1>
+    <% else %>
+      <h1>All <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> Requested</h1>
+    <% end %>
+  <% end %>
 </div>
 <table class="table table-striped">
   <thead>
@@ -8,16 +16,14 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:service_code) %></th>
       <th><%= model_class.human_attribute_name(:date_time) %></th>
-      <% if @user=='o' or @user=='t' %>
-        <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <% end %>
       <th><%= model_class.human_attribute_name(:from_address_id) %></th>
-      <th><%= model_class.human_attribute_name(:payment) %></th>
-      <th><%= model_class.human_attribute_name(:vehicle_id) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
       
+      <!--<th><%= model_class.human_attribute_name(:payment) %></th>-->
+      <!--<th><%= model_class.human_attribute_name(:vehicle_id) %></th><--></-->
+      <!--<th><%= model_class.human_attribute_name(:user_id) %></th>-->
+      <!--<th><%= model_class.human_attribute_name(:created_at) %></th> -->     
       <!--<th><%= model_class.human_attribute_name(:to_address_id) %></th>-->
       <!--<th><%= model_class.human_attribute_name(:passengers) %></th>-->
       <!--<th><%= model_class.human_attribute_name(:vehicle_type_id) %></th>-->
@@ -33,15 +39,15 @@
         <td><%= link_to service.id, service_path(service) %></td>
         <td><%= service.service_code %></td>        
         <td><%= service.date_time.strftime("%d/%m/%Y %I:%M %p") %></td>
-        <% if @user=='o' or @user=='t' %>
-          <td><%= service.profile.name %></td>
-        <% end %>
+          
         <td><%= service.from_address.name %></td>
-        <td><%= service.payment %></td>        
-        <td><%= service.vehicle_id %></td>
         <td><%= service.status %></td>
-        <td><%= service.created_at.strftime("%d/%m/%Y %I:%M %p") %></td>
         
+        
+        <!--<td><%= service.user_id %></td>-->  
+        <!--<td><%= service.payment %></td>-->        
+        <!--<td><%= service.vehicle_id %></td>-->        
+        <!--<td><%= service.created_at.strftime("%d/%m/%Y %I:%M %p") %></td>-->
         <!--<td><%= service.to_address.name %></td>-->
         <!--<td><%= service.passengers %></td>-->
         <!--<td><%= service.vehicle_type.name %></td>-->

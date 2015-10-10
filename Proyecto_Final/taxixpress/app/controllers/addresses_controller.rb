@@ -5,7 +5,7 @@ class AddressesController < ApplicationController
   # GET /addresses.json
   def index
     @addresses = Address.where(user_id: current_user.id, favourite: true)
-    #render :text => @addresses.size
+    #render :text => @addresses.length
     #Address.find_by_sql("SELECT * FROM addresses WHERE user_id =?", $iduser)
   end
 

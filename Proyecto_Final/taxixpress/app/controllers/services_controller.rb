@@ -13,8 +13,9 @@ class ServicesController < ApplicationController
       when "Operador"
         @services = Service.all
       when "Taxista"
-        @services = Service.all
-        #@services = Service.where(vehicle_id: current_user.vehicle.user_id)
+        #render :text => @car.id
+        @services = Service.where(vehicle_id: $car)
+       
     end
   end
  

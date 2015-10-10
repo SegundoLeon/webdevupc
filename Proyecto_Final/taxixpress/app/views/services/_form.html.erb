@@ -1,29 +1,75 @@
 <%= simple_form_for @service, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.association :user %>
-  <%= error_span(@service[:user_name]) %>
-  <%= f.association :from_address %>
-  <%= error_span(@service[:from_address_name]) %>
-  <%= f.association :to_address %>
-  <%= error_span(@service[:to_address_name]) %>
+  <%= f.input :user_id, :as => :hidden, input_html: { value: current_user.id } %>
+  <%= error_span(@service[:user_id]) %>
+
+  <% if current_user.user_type.name == "Cliente"  %>
+    <%= f.association :from_address, collection: Address.where('user_id =?',current_user.id) %>
+    <%= error_span(@service[:from_address_name]) %>
+    <%= f.association :to_address, collection: Address.where('user_id =?',current_user.id) %>
+    <%= error_span(@service[:to_address_name]) %>  
+  <% else %>
+    <%= f.association :from_address %>
+    <%= error_span(@service[:from_address_name]) %>
+    <%= f.association :to_address %>
+    <%= error_span(@service[:to_address_name]) %>    
+  <% end %>
+  
   <%= f.input :date_time %>
   <%= error_span(@service[:date_time]) %>
   <%= f.input :payment %>
   <%= error_span(@service[:payment]) %>
-  <%= f.input :passengers %>
+  <%= f.input :passengers, input_html: { value: 1} %>
   <%= error_span(@service[:passengers]) %>
-  <%= f.association :vehicle_type %>
+  <%= f.association :vehicle_type, selected: 1 %>
   <%= error_span(@service[:vehicle_type_name]) %>
-  <%= f.association :payment_method %>
+  <%= f.association :payment_method, selected: 2 %>
   <%= error_span(@service[:payment_method_name]) %>
-  <%= f.input :service_code %>
-  <%= error_span(@service[:service_code]) %>
-  <%= f.association :vehicle %>
-  <%= error_span(@service[:vehicle_name]) %>
-  <%= f.input :rate %>
-  <%= error_span(@service[:rate]) %>
-  <%= f.input :experience %>
-  <%= error_span(@service[:experience]) %>
-  <%= f.input :status %>
+  
+  <% if @service[:status] == "Solicitado" %>
+    <%= f.input :service_code, input_html: { readonly: true } %>
+    <%= error_span(@service[:service_code]) %>
+    <% if current_user.user_type.name == "Cliente"  %>
+      <%= f.association :vehicle, input_html: { readonly: true} %>
+      <%= error_span(@service[:vehicle_name]) %>
+    <% else %>
+      <% if current_user.user_type.name == "Operador"  %>
+        <%= f.association :vehicle %><%= error_span(@service[:vehicle_name]) %>
+      <% end %>
+    <% end %>
+    <%= f.input :rate, :as => :hidden %>
+    <%= error_span(@service[:rate]) %>
+    <%= f.input :experience, :as => :hidden %>
+    <%= error_span(@service[:experience]) %>
+  <% else %><!-- Asignado, Atendido o Cancelado -->
+    <% if @service[:status] == "Asignado" || @service[:status] == "Atendido" || @service[:status] == "Cancelado" %>
+      <%= f.input :service_code, input_html: { readonly: true } %>
+      <%= error_span(@service[:service_code]) %>
+      <%= f.association :vehicle, input_html: { readonly: true } %>
+      <%= error_span(@service[:vehicle_name]) %>
+      <% if current_user.user_type.name == "Cliente"  %>
+        <%= f.input :rate, :collection => [['Malo',1],['Regular',2],['Bueno',3],['Muy bueno',4]] %>
+        <%= error_span(@service[:rate]) %>
+        <%= f.input :experience %>
+        <%= error_span(@service[:experience]) %>
+      <% else %>
+        <%= f.input :rate, input_html: { readonly: true } %>
+        <%= error_span(@service[:rate]) %>
+        <%= f.input :experience, input_html: { readonly: true } %>
+        <%= error_span(@service[:experience]) %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% if @service[:status].nil? %>
+    <%= f.input :status, :as => :hidden, input_html: { readonly: true, value: "Solicitado"} %>
+  <% else %>
+    <% if current_user.user_type.name == "Cliente"  %>
+      <%= f.input :status, input_html: { readonly: true} %>
+    <% else %>
+      <%= f.input :status, :collection => ['Solicitado','Asignado','Atendido','Cancelado'] %>
+    <% end %>
+  <% end  %>
+
   <%= error_span(@service[:status]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
