@@ -7,6 +7,7 @@ class VehiclesController < ApplicationController
   def index
     @vehicle_type = VehicleType.find(params[:vehicle_type_id])
     @vehicles = @vehicle_type.vehicles
+    @vehicles.inspect
   end
 
   # GET /vehicles/1
